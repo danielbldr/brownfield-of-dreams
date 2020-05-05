@@ -4,15 +4,18 @@ rbenv:
 addons:
   postgresql: 9.6
   chrome: stable
-dist: trusty
+dist: xenial
+before_install:
+  - yes | gem update --system --force
+  - gem install bundler
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key: 
-  app: 
+  api_key:
+  app:
   run: rails db:migrate
 dd:
   secure: Je83xjwfzgDTQvQGw8BRehHut17PRkEFiTWOZyWz+G4sR5o0lnVBjbw98nOhfIrfqDl8WgU+bf6H41r440b5FabnVi6ogvGwHw28mPDwqHV5b8nAOAC7cxAz8pNp0Urtae6dQ6UJgtrhGiRte5LtGDMlHU2CaGxFxcI1Ooi0OyQqaWVLKPXGSdskQTuEuV6/oWUY3/IaLVSw4J+aW1nym3ut43WNDu6j6Mh8qKCyCbO77GwzKphd5mn19xTfRidST82BGSvWtkq+mTBiHrFvg1Su3MDm8uzyN8Eqrb4uXgmCJfgK5PIU1GHSvaXNEbgJnQINDVWNjhVCiqeAu2qgyGJvhMDDpzvvVXWh/DErLq2DhI8WUUzCDWL3B2xXR8zFSN1P7H1qKTvNh0PzvVT4W9x9zR5yNATVoWsz+JsZkgNTJ0bna5X0uaup75dEEW6LfXi4vzW+zfRzMdDfqrh1z5Lx8MtrB+h1McVQAu+YHeip1LRdMtQkn+xmu7f322XhaA7jRVZHUks7ZjCtssbSiMhKq+NG6z0a2nFSQgEGZ+BXC14rwo2EYz3zUfhasXG0iMeZYA1CoXL2iVH2WYb1WQs0kTUc3oM1UHuB1CHCni5CIewyhWKp9ZwdejypNF6Vga19Hl0JuKwd+ykxulf8Z3hZnEuotfgtz1CBDobtr3Q=
