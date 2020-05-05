@@ -13,5 +13,11 @@ describe 'An admin user can create new tutorials' do
     click_link "New Tutorial"
 
     expect(current_path).to eq('/admin/tutorials/new')
+
+    fill_in "Title", with: "How to make toast"
+    fill_in "Description", with: "Its not just for dinner!"
+    fill_in "Thumbnail", with: "https://img.youtube.com/vi/pX0eJBvBNzs/maxresdefault.jpg"
+
+    click_button "Save"
   end
 end
