@@ -27,7 +27,6 @@
 /config/master.key
 
 # Ignore application configuration
-/.travis.yml
 /config/application.yml
 /public/packs
 /public/packs-test
