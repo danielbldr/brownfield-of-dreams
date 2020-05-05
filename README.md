@@ -1,5 +1,7 @@
 # Brownfield Of Dreams
 
+Daniel Atkinson and Mike Hernandez
+
 This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 
 Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
