@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    conn = Faraday.new(url: "https://api.github.com") do |faraday|
+    conn = Faraday.new(url: 'https://api.github.com') do |faraday|
       faraday.headers['Authorization'] = "token #{current_user.token}"
     end
 
