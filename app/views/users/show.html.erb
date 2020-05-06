@@ -11,7 +11,12 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section class="github-repos">
-
-  </section>
+  <% if current_user.github_name %>
+    <section class="<%= current_user.github_name %>-repos">
+      <h3>Your GitHub Repos</h3>
+      <% @repos.each do |repo| %>
+        <p><%= link_to repo[:name], repo[:html_url] %></p>
+      <% end %>
+    </section>
+  <% end %>
 </section>
