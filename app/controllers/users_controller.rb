@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    conn = Faraday.new(url: "https://api.github.org")
+    require "pry"; binding.pry
+  end
 
   def new
     @user = User.new
