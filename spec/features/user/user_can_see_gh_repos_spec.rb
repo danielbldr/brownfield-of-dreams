@@ -6,6 +6,8 @@ describe 'as a user I can visit my dahsboard' do
                        first_name: "Mike",
                        last_name: "Hernandez",
                        password: "mike",
+                       github_name: "mikez321",
+                       token: ENV['GITHUB_API_KEY']
                       )
 
     visit '/'
@@ -24,7 +26,5 @@ describe 'as a user I can visit my dahsboard' do
     within ".github-repos" do
       expect(page).to have_content("activerecord-obstacle-course")
     end
-
-
   end
 end
