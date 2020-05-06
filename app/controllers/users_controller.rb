@@ -1,7 +1,16 @@
 class UsersController < ApplicationController
   def show
-    conn = Faraday.new(url: "https://api.github.org")
-    require "pry"; binding.pry
+    conn = Faraday.new(url: "https://api.github.com") do |faraday|
+      faraday.headers['Authorization'] = "token #{current_user.token}"
+    end
+
+    response = conn.get('user/repos')
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    @repos = []
+    5.times do |repo|
+      @repos << json[repo]
+    end
   end
 
   def new
