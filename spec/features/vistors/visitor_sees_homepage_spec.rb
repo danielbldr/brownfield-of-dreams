@@ -17,6 +17,7 @@ describe 'Visitor' do
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 2)
+      expect(page).to_not have_css("#tutorial-#{tutorial3.id}")
 
       within("#tutorial-#{tutorial1.id}") do
         expect(page).to have_css('.tutorial-description')
