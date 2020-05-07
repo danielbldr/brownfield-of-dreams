@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
     github_results = GithubResults.new
     @repos = github_results.get_repos(current_user.token)[0..4]
+    @followers = github_results.get_followers(current_user.token)[0..4]
   end
 
   def new
