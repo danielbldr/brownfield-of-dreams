@@ -72,6 +72,6 @@ describe 'as a user I can visit my dahsboard' do
 
     click_on 'Log In'
 
-    expect(page).to_not have_content("Your GitHub Repos")
+    expect(page).to_not have_content("Your Github Repos")
   end
 end
