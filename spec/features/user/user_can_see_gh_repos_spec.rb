@@ -6,14 +6,12 @@ describe 'as a user I can visit my dahsboard' do
                        first_name: "Mike",
                        last_name: "Hernandez",
                        password: "mike",
-                       github_name: "mikez321",
                        token: ENV['GITHUB_API_KEY']
                       )
     user2 = User.create(email: "atkinson.daniel7@gmail.com",
                        first_name: "Daniel",
                        last_name: "Atkinson",
                        password: "mike",
-                       github_name: "danielbldr",
                        token: ENV['MY_GITHUB_KEY']
                       )
     user3 = User.create(email: "bob@example.com",
@@ -32,12 +30,13 @@ describe 'as a user I can visit my dahsboard' do
 
     click_on 'Log In'
 
-    within ".#{user1.github_name}-repos" do
+    within ".#{user1.first_name}-repos" do
       expect(page).to have_link("monster_shop_2001")
       expect(page).to have_link("futbol")
       expect(page).to have_link("brownfield-of-dreams")
       expect(page).to have_link("activerecord-obstacle-course")
       expect(page).to have_link("adopt_dont_shop_2001")
+      expect(page).to have_css('.repo', count: 5)
       page.assert_selector(:css, 'a[href="https://github.com/mikez321/adopt_dont_shop_2001"]')
     end
 
@@ -52,9 +51,9 @@ describe 'as a user I can visit my dahsboard' do
 
     click_on 'Log In'
 
-    expect(page).to_not have_css(".#{user1.github_name}-repos")
+    expect(page).to_not have_css(".#{user1.first_name}-repos")
 
-    within ".#{user2.github_name}-repos" do
+    within ".#{user2.first_name}-repos" do
       expect(page).to have_link("activerecord-obstacle-course")
       expect(page).to have_link("adopt_dont_shop_2001")
       expect(page).to have_link("adopt_dont_shop_paired")
@@ -74,6 +73,6 @@ describe 'as a user I can visit my dahsboard' do
 
     click_on 'Log In'
 
-    expect(page).to_not have_content("Your GitHub Repos")
+    expect(page).to_not have_content("Your Github Repos")
   end
 end
