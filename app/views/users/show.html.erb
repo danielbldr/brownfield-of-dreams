@@ -17,8 +17,9 @@
       <% @repos.each do |repo| %>
         <p class='repo'><%= link_to repo.name, repo.html_url %></p>
       <% end %>
-    </section>
+    </section><br>
     <section class="<%= current_user.first_name %>-followers">
+      <h3>Your Github Followers</h3>
       <% @followers.each do |follower| %>
         <p class='follower'><%= link_to follower.login, follower.html_url %></p>
       <% end %>
