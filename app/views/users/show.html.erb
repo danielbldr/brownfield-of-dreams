@@ -13,9 +13,9 @@
 
   <% if current_user.token %>
     <section class="<%= current_user.first_name %>-repos">
-      <h3>Your GitHub Repos</h3>
+      <h3>Your Github Repos</h3>
       <% @repos.each do |repo| %>
-        <p><%= link_to repo[:name], repo[:html_url] %></p>
+        <p><%= link_to repo.name, repo.html_url %></p>
       <% end %>
     </section>
   <% end %>
