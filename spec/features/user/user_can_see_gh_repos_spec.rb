@@ -36,6 +36,7 @@ describe 'as a user I can visit my dahsboard' do
       expect(page).to have_link("brownfield-of-dreams")
       expect(page).to have_link("activerecord-obstacle-course")
       expect(page).to have_link("adopt_dont_shop_2001")
+      expect(page).to have_css('.repo', count: 5)
       page.assert_selector(:css, 'a[href="https://github.com/mikez321/adopt_dont_shop_2001"]')
     end
 
