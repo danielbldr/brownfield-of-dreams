@@ -6,6 +6,7 @@ class GithubController < ApplicationController
   end
 
   protected
+
   def auth_info
     request.env['omniauth.auth']
   end
