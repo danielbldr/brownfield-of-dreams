@@ -11,7 +11,6 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <%= link_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
 
   <% if current_user.token %>
     <section class="<%= current_user.first_name %>-repos">
@@ -25,11 +24,14 @@
       <% @followers.each do |follower| %>
         <p class='follower'><%= link_to follower.login, follower.html_url %></p>
       <% end %>
-    </section>
+    </section><br>
     <section class="<%= current_user.first_name %>-following">
+      <h3>Users You Follow on Github</h3>
       <% @following.each do |user| %>
         <p class='following-user'><%= link_to user.login, user.html_url %></p>
       <% end %>
     </section>
+  <% else %>
+    <%= link_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
 </section>
