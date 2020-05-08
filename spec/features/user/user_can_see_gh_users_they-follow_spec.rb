@@ -18,6 +18,7 @@ RSpec.describe 'as a user when I visit my dashboard', type: :feature do
         expect(page).to have_link("leepanter")
         expect(page).to have_link("DavidTTran")
         expect(page).to have_link("tylertomlinson")
+        page.assert_selector(:css, 'a[href="https://github.com/leepanter"]')
       end
     end
   end
