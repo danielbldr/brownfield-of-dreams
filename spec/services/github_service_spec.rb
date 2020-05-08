@@ -8,7 +8,7 @@ describe 'GithubService', type: :service do
       password: "mike",
       token: ENV['GITHUB_API_KEY']
     )
-
+    
     @github_service = GithubService.new
   end
 
@@ -20,5 +20,10 @@ describe 'GithubService', type: :service do
   it 'can get a response for user github followers' do
     expect(@github_service.user_followers(@user.token).first).to have_key :login
     expect(@github_service.user_followers(@user.token).first).to have_key :html_url
+  end
+
+  it 'can get a response for github users followed by registered user' do
+    expect(@github_service.user_following(@user.token).first).to have_key :login
+    expect(@github_service.user_following(@user.token).first).to have_key :html_url
   end
 end

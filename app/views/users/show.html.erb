@@ -24,5 +24,10 @@
         <p class='follower'><%= link_to follower.login, follower.html_url %></p>
       <% end %>
     </section>
+    <section class="<%= current_user.first_name %>-following">
+      <% @following.each do |user| %>
+        <p class='following-user'><%= link_to user.login, user.html_url %></p>
+      <% end %>
+    </section>
   <% end %>
 </section>
