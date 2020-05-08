@@ -8,5 +8,12 @@ describe 'Github Results' do
       expect(results.get_repos(ENV['GITHUB_API_KEY']).first).to be_a Repo
       expect(results.get_repos(ENV['GITHUB_API_KEY']).last).to be_a Repo
     end
+
+    it 'can return array of following objects' do
+      results = GithubResults.new
+      expect(results.get_following(ENV['GITHUB_API_KEY'])).to be_an Array
+      expect(results.get_following(ENV['GITHUB_API_KEY']).first).to be_a Following
+      expect(results.get_following(ENV['GITHUB_API_KEY']).last).to be_a Following
+    end
   end
 end
