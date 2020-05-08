@@ -15,7 +15,9 @@ RSpec.describe 'as a user when I visit my dashboard', type: :feature do
       visit dashboard_path
 
       within ".#{user1.first_name}-following" do
-        # expect(page).to have_link("Lee Panter")
+        expect(page).to have_link("leepanter")
+        expect(page).to have_link("DavidTTran")
+        expect(page).to have_link("tylertomlinson")
       end
     end
   end
