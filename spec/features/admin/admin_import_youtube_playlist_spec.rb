@@ -16,9 +16,11 @@ describe 'As an admin I can click new tutorial on the dashboard' do
 
       click_link 'Import YouTube Playlist'
 
-      fill_in 'Playlist ID', with: "PLpfKu0U8zxt5rvqkZz8C6NDtjuXyl4HwW"
+      fill_in :tutorial_playlist_id, with: "PLpfKu0U8zxt5rvqkZz8C6NDtjuXyl4HwW"
 
       click_button 'Save'
+
+      expect(current_path).to eq('/admin/dashboard')
     end
   end
 end
