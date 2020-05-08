@@ -11,6 +11,8 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <%= link_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %>
+
   <% if current_user.token %>
     <section class="<%= current_user.first_name %>-repos">
       <h3>Your Github Repos</h3>
