@@ -40,5 +40,15 @@ describe "An Admin can edit a tutorial" do
     expect(page).to have_content("Unable to create video.")
 
     expect(page).to_not have_css(".video")
+
+    fill_in "video[title]", with: "How to tie your shoes."
+    fill_in "video[description]", with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
+    click_on "Create Video"
+    
+    expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
+
+    expect(page).to have_content("Unable to create video.")
+
+    expect(page).to_not have_css(".video")
   end
 end
