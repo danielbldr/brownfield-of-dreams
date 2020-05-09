@@ -30,7 +30,6 @@ class Admin::TutorialsController < Admin::BaseController
                                position: video[:snippet][:position])
       end
 
-      # tutorial.save_playlist_videos(params["tutorial"]["playlist_id"]) if params["tutorial"]["playlist_id"]
       flash[:success] = 'Successfully created tutorial.'
       redirect_to tutorial_path(id: tutorial.id)
     else
