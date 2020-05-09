@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   def show
     return unless current_user.token
 
-    github_results = GithubResults.new
-    @repos = github_results.get_repos(current_user.token)[0..4]
-    @followers = github_results.get_followers(current_user.token)
+    github_results ||= GithubResults.new
+    @repos ||= github_results.get_repos(current_user.token)[0..4]
+    @followers ||= github_results.get_followers(current_user.token)
   end
 
   def new
