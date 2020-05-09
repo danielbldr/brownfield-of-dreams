@@ -51,8 +51,8 @@ describe 'visitor can create an account', :js do
     fill_in 'Password confirmation', with: 'mike'
 
     click_on'Create Account'
-    #
-    # expect(current_path).to eq(new_user_path)
-    # expect(page).to have_content('Username already exists')
+    
+    expect(current_path).to eq(new_user_path)
+    expect(page).to have_content('Username already exists')
   end
 end
