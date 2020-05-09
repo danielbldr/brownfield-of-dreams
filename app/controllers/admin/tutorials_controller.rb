@@ -6,6 +6,31 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     tutorial = Tutorial.new(tutorial_params)
     if tutorial.save
+
+      conn = Faraday.new(url: 'https://www.googleapis.com/') do |faraday|
+        faraday.params[:part] = 'snippet'
+        faraday.params[:key] = ENV['YOUTUBE_API_KEY']
+      end
+
+      part = 'snippet'
+      key = ENV['YOUTUBE_API_KEY']
+      playlist_id = params['tutorial']['playlist_id']
+
+      response = conn.get("/youtube/v3/playlistItems?part=#{part}&playlistId=#{playlist_id}&key=#{key}")
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      videos = json[:items]
+
+      videos.each do |video|
+        tutorial.videos.create(title: video[:snippet][:title],
+                               description: video[:snippet][:description],
+                               video_id: video[:id],
+                               thumbnail: video[:snippet][:thumbnails][:standard][:url],
+                               position: video[:snippet][:position])
+      end
+
+      # tutorial.save_playlist_videos(params["tutorial"]["playlist_id"]) if params["tutorial"]["playlist_id"]
       flash[:success] = 'Successfully created tutorial.'
       redirect_to tutorial_path(id: tutorial.id)
     else
@@ -38,6 +63,6 @@ class Admin::TutorialsController < Admin::BaseController
     params.require(:tutorial).permit(:tag_list,
                                      :title,
                                      :description,
-                                     :thumbnail)
+                                     :thumbnail,)
   end
 end
