@@ -9,4 +9,14 @@ class Tutorial < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :thumbnail, presence: true
+
+  def create_videos(videos)
+    videos.each do |video|
+      self.videos.create(title: video[:snippet][:title],
+                         description: video[:snippet][:description],
+                         video_id: video[:id],
+                         thumbnail: video[:snippet][:thumbnails][:standard][:url],
+                         position: video[:snippet][:position])
+    end
+  end
 end
