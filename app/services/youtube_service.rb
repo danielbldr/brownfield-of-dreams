@@ -5,6 +5,12 @@ class YoutubeService
     get_json('youtube/v3/videos', params)
   end
 
+  def get_playlist_videos(playlist_id)
+    params = { part: 'snippet', playlistId: playlist_id }
+
+    get_json('youtube/v3/playlistItems', params)[:items]
+  end
+
   private
 
   def get_json(url, params)
