@@ -6,14 +6,14 @@
     <h4>Videos</h4>
     <ul>
       <% @facade.videos.each do |video| %>
-        <li>
+        <li class='video'>
           <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
         </li>
       <% end %>
     </ul>
   </div>
-  
-  <% if @facade.current_video %> 
+
+  <% if @facade.current_video %>
     <div class="col col-8">
       <div class="title-bookmark">
         <h3><%= @facade.current_video.title %></h3>
