@@ -9,6 +9,11 @@ class GithubService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def user_following(user_token)
+    response = conn(user_token).get('user/following')
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def conn(user_token)
     Faraday.new(url: 'https://api.github.com') do |faraday|
       faraday.headers['Authorization'] = "token #{user_token}"
