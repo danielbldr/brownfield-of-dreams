@@ -20,14 +20,12 @@ describe 'As an admin I can click new tutorial on the dashboard' do
 
       click_button 'Save'
 
-      expect(current_path).to eq('/admin/dashboard')
+      expect(current_path).to eq(tutorial_path(Tutorial.all.last.id))
 
       within('.flash-message') do
         expect(page).to have_content('Successfully created tutorial. View it here')
         click_link 'View it here'
       end
-
-      expect(current_path).to eq("/tutorials/#{Tutorial.all.last.id}")
 
       expect(page).to have_link('An Interview with Mark Robberds on Ashtanga Yoga')
       expect(page).to have_link('Ashtanga Yoga - Forearm Balance, Pinchamayurasana with Mark Robberds')
