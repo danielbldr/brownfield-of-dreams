@@ -3,6 +3,7 @@ class Video < ApplicationRecord
   has_many :users, through: :user_videos
   belongs_to :tutorial
 
+  validates :tutorial_id, presence: true
   validates :title, presence: true
   validates :video_id, presence: true
 end

@@ -8,6 +8,7 @@ RSpec.describe Video do
   end
 
   describe 'validations' do
+    it {should validate_presence_of(:tutorial_id)}
     it {should validate_presence_of(:title)}
     it {should validate_presence_of(:video_id)}
   end

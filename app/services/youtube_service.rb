@@ -5,6 +5,19 @@ class YoutubeService
     get_json('youtube/v3/videos', params)
   end
 
+  def get_playlist_videos(playlist_id)
+    params = { part: 'snippet', playlistId: playlist_id }
+    json = get_json('youtube/v3/playlistItems', params)
+    json_items = json[:items]
+    if json[:nextPageToken]
+      params = { part: 'snippet',
+                 playlistId: playlist_id,
+                 pageToken: json[:nextPageToken] }
+      json_items << get_json('youtube/v3/playlistItems', params)[:items]
+    end
+    json_items.flatten
+  end
+
   private
 
   def get_json(url, params)
@@ -16,6 +29,7 @@ class YoutubeService
     Faraday.new(url: 'https://www.googleapis.com') do |f|
       f.adapter Faraday.default_adapter
       f.params[:key] = ENV['YOUTUBE_API_KEY']
+      f.params[:maxResults] = 50
     end
   end
 end
