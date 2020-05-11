@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GithubService', type: :service do
+describe 'GithubService', :vcr, type: :service do
   before(:each) do
     @user = User.create(email: "mike@mike.com",
       first_name: "Mike",
@@ -8,7 +8,7 @@ describe 'GithubService', type: :service do
       password: "mike",
       token: ENV['GITHUB_API_KEY']
     )
-    
+
     @github_service = GithubService.new
   end
 
