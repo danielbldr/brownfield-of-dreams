@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=AIzaSyD3OAw77Zd5iI3iYjagAtYTyz5mYhDSsBg&maxResults=50&part=snippet,contentDetails,statistics
+    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=AIzaSyD3OAw77Zd5iI3iYjagAtYTyz5mYhDSsBg&maxResults=10&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 11 May 2020 22:06:37 GMT
+      - Mon, 11 May 2020 22:55:52 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -117,10 +117,10 @@ http_interactions:
           }
         }
     http_version: null
-  recorded_at: Mon, 11 May 2020 22:06:37 GMT
+  recorded_at: Mon, 11 May 2020 22:55:52 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=&key=AIzaSyD3OAw77Zd5iI3iYjagAtYTyz5mYhDSsBg&maxResults=50&part=snippet,contentDetails,statistics
+    uri: https://www.googleapis.com/youtube/v3/videos?id=&key=AIzaSyD3OAw77Zd5iI3iYjagAtYTyz5mYhDSsBg&maxResults=10&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
       string: ''
@@ -136,24 +136,29 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Type:
-      - application/json; charset=UTF-8
+      Expires:
+      - Mon, 11 May 2020 22:55:52 GMT
+      Date:
+      - Mon, 11 May 2020 22:55:52 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"Dn5xIderbhAnUk5TAW0qkFFir0M/ftqcoEi5lFrDLEyLbPZCiTrEzXU"'
       Vary:
       - Origin
-      - Referer
       - X-Origin
-      Date:
-      - Mon, 11 May 2020 22:06:37 GMT
-      Server:
-      - scaffolding on HTTPServer2
-      Cache-Control:
-      - private
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
+      Content-Type:
+      - application/json; charset=UTF-8
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q049=":443";
         ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
@@ -164,14 +169,14 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "kind": "youtube#videoListResponse",
-          "etag": "ffwCvdMctkfT3r3dZATOA9TZuck",
-          "items": [],
-          "pageInfo": {
-            "totalResults": 0,
-            "resultsPerPage": 0
-          }
+         "kind": "youtube#videoListResponse",
+         "etag": "\"Dn5xIderbhAnUk5TAW0qkFFir0M/ftqcoEi5lFrDLEyLbPZCiTrEzXU\"",
+         "pageInfo": {
+          "totalResults": 0,
+          "resultsPerPage": 0
+         },
+         "items": []
         }
     http_version: null
-  recorded_at: Mon, 11 May 2020 22:06:37 GMT
+  recorded_at: Mon, 11 May 2020 22:55:52 GMT
 recorded_with: VCR 5.1.0
