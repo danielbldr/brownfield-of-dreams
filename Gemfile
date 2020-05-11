@@ -31,18 +31,23 @@ gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-c
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'foundation-rails'
   gem 'database_cleaner'
   gem 'pry'
-  gem 'capybara'
-  gem 'launchy'
   gem 'shoulda-matchers'
   gem 'awesome_print'
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :test do
   gem 'orderly'
+  gem 'launchy'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

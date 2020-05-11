@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'as a user when I visit my dashboard' do
-  it 'I can connect to Github through OAuth' do
+  it 'I can connect to Github through OAuth', :vcr do
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({

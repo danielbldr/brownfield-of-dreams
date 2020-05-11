@@ -1,7 +1,7 @@
 class GithubController < ApplicationController
   def create
     token = auth_info['credentials']['token']
-    current_user.update_attribute(:token, token)
+    current_user.update(token: token)
     redirect_to dashboard_path
   end
 

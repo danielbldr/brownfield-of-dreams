@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As an admin I can click new tutorial on the dashboard' do
-  describe 'I can then click Import Youtube Playlist' do
+  describe 'I can then click Import Youtube Playlist', :vcr do
     it 'I see a form and can enter a valid Youtube Playlist id to create tutorial' do
       admin = create(:user, role: 1)
 

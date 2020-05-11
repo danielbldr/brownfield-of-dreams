@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'as a user I can visit my dahsboard' do
-  scenario 'I can see my followers on github' do
+  scenario 'I can see my followers on github', :vcr do
     user1 = User.create(email: "mike@mike.com",
                        first_name: "Mike",
                        last_name: "Hernandez",
