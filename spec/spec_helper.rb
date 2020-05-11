@@ -1,4 +1,13 @@
+require 'webmock/rspec'
 RSpec.configure do |config|
+  require 'vcr'
+
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    c.hook_into :webmock
+    c.filter_sensitive_data('<GITHUB_API_KEY>') { ENV['GITHUB_API_KEY'] }
+    c.configure_rspec_metadata!
+  end
 
   config.before(:suite) do
      DatabaseCleaner.clean_with(:truncation)
