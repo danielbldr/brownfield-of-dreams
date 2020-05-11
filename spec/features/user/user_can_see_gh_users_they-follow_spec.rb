@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'as a user when I visit my dashboard', type: :feature do
   describe 'I can see all the users I follow on Github' do
-    it 'and their names are links to their Github profile' do
+    it 'and their names are links to their Github profile', :vcr do
       user1 = User.create(email: "mike@mike.com",
                          first_name: "Mike",
                          last_name: "Hernandez",
