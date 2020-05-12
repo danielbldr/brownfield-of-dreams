@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def status
-    return 'Active' if self.active == true
+    return 'Active' if active == true
+
     'Pending Activation'
   end
 end
