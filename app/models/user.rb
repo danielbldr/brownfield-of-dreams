@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.in_database?(username)
-    return false if User.where(github_login: username) == []
-      true
+    User.where(github_login: username).length == 1
   end
 end
