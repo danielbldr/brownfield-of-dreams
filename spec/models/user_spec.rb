@@ -26,4 +26,21 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'class methods' do
+    it 'knows if a github name is in the database' do
+      user1 = create(:user)
+      user3 = create(:user)
+      user2 = User.create(email: "mike@mike.com",
+                         first_name: "Mike",
+                         last_name: "Hernandez",
+                         password: "mike",
+                         token: ENV['GITHUB_API_KEY'],
+                         github_login: 'mikez321'
+                        )
+
+      expect(User.in_database?(user1.github_login)).to eq(false)
+      expect(User.in_database?(user2.github_login)).to eq(true)
+    end
+  end
 end
