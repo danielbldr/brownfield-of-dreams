@@ -26,4 +26,8 @@ describe 'GithubService', :vcr, type: :service do
     expect(@github_service.user_following(@user.token).first).to have_key :login
     expect(@github_service.user_following(@user.token).first).to have_key :html_url
   end
+
+  it 'can retun the github users login name' do
+    expect(@github_service.github_login(@user.token)).to be_a(String)
+  end
 end
