@@ -16,11 +16,19 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to dashboard_path
+      redirect_to activation_path
     else
       flash[:error] = 'Username already exists'
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(active: true)
+    user.save
+    flash[:success] = 'Thank you! Your account is now activated.'
+    redirect_to dashboard_path
   end
 
   private

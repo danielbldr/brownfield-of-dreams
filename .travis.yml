@@ -8,6 +8,9 @@ dist: xenial
 before_install:
   - yes | gem update --system --force
   - gem install bundler
+before_script:
+  - gem install mailcatcher
+  - mailcatcher
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
