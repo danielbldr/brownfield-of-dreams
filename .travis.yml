@@ -11,6 +11,7 @@ before_install:
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
+- mailcatcher
 - bundle exec rspec
 deploy:
   provider: heroku
