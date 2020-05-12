@@ -35,6 +35,15 @@ RSpec.describe 'a user can add friends from their github followers' do
       expect(page).to_not have_link "Add Friend"
     end
 
+    within ".Mike-following" do
+      expect(page).to have_content("danielbldr")
+      expect(page).to have_content("leepanter")
+    end
+
+    within ".following-leepanter" do
+      expect(page).to_not have_link "Add Friend"
+    end
+
     within ".follower-danielbldr" do
       click_link "Add Friend"
     end
