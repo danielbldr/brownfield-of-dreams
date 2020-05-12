@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.in_database?(username)
-    User.where(github_login: username).length == 1
+    User.where(github_login: username).exists? && !username.nil?
   end
 end
