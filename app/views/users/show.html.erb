@@ -32,7 +32,11 @@
     <section class="<%= current_user.first_name %>-following">
       <h3>Users You Follow on Github</h3>
       <% @following.each do |following| %>
-        <p class='following-<%= following.login %>'><%= link_to following.login, following.html_url %></p>
+        <% if User.in_database?(following.login) %>
+          <p class='following-<%= following.login %>'><%= link_to following.login, following.html_url %> - <%= link_to "Add Friend", friends_path, method: :post %></p>
+        <% else %>
+          <p class='following-<%= following.login %>'><%= link_to following.login, following.html_url %></p>
+        <% end %>
       <% end %>
     </section>
   <% else %>
