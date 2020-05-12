@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=AIzaSyBzuvHC9RfJWA876vCBSvAPserZy7oqWM8&maxResults=10&part=snippet,contentDetails,statistics
+    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=<YOUTUBE_API_KEY>&maxResults=10&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 12 May 2020 19:29:54 GMT
+      - Tue, 12 May 2020 22:22:22 GMT
       Server:
       - scaffolding on HTTPServer2
       Cache-Control:
@@ -117,5 +117,5 @@ http_interactions:
           }
         }
     http_version: null
-  recorded_at: Tue, 12 May 2020 19:29:54 GMT
+  recorded_at: Tue, 12 May 2020 22:22:22 GMT
 recorded_with: VCR 5.1.0

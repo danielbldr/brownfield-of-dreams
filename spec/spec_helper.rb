@@ -7,6 +7,7 @@ RSpec.configure do |config|
     c.hook_into :webmock
     c.filter_sensitive_data('<GITHUB_API_KEY>') { ENV['GITHUB_API_KEY'] }
     c.filter_sensitive_data('<MY_GITHUB_KEY>') { ENV['MY_GITHUB_KEY'] }
+    c.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
     c.configure_rspec_metadata!
   end
 
