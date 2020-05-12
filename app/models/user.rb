@@ -8,4 +8,9 @@ class User < ApplicationRecord
 
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def self.in_database?(username)
+    return false if User.where(github_login: username) == []
+      true
+  end
 end
