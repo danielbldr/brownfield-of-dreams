@@ -26,4 +26,16 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'instance methods' do
+    it 'can return active or pending activation' do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
+
+      expect(user.status).to eq('Pending Activation')
+
+      user.active = true
+
+      expect(user.status).to eq('Active')
+    end
+  end
 end
