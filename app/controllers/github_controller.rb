@@ -12,7 +12,6 @@ class GithubController < ApplicationController
   end
 
   def get_user_login(token)
-    github = GithubService.new
-    github.user_repos(token).first[:owner][:login]
+    GithubService.new.github_login(token)
   end
 end
