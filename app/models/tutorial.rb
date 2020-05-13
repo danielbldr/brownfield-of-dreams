@@ -14,7 +14,7 @@ class Tutorial < ApplicationRecord
     videos.each do |vid|
       self.videos.create(title: vid[:snippet][:title],
                          description: vid[:snippet][:description],
-                         video_id: vid[:id],
+                         video_id: vid[:snippet][:resourceId][:videoId],
                          thumbnail: vid[:snippet][:thumbnails][:standard][:url],
                          position: vid[:snippet][:position])
     end
