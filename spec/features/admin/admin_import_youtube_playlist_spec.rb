@@ -57,7 +57,7 @@ describe 'As an admin I can click new tutorial on the dashboard' do
         click_link 'View it here'
       end
 
-      expect(page).to have_css('.video', count: 75)
+      expect(page).to have_css('.tutorial-video', count: 75)
 
       expect('40 Minute Beginner Yoga for Strength and Flexibility').to appear_before('Beginner Ashtanga, One Hour Modified Primary Series')
       expect('Beginner Ashtanga, One Hour Modified Primary Series').to appear_before('Sunset Yoga for Relaxation — 15 Minute Practice')
