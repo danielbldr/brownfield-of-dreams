@@ -50,9 +50,12 @@ RSpec.describe 'as a user I can see my bookmarks' do
     end
 
     within ".bookmarks" do
-      expect(video4.title).to appear_before(video3.title)
       expect(video1.title).to appear_before(video2.title)
-      expect(video3.title).to appear_before(video1.title)
+      expect(video4.title).to appear_before(video3.title)
+      expect(video2.title).to appear_before(video4.title)
+      click_link video1.title
     end
+
+    expect(page).to have_current_path "/tutorials/#{tutorial1.id}?video_id=#{video1.id}"
   end
 end
