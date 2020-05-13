@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
       expect(User.in_database?(user2.github_login)).to eq(true)
     end
   end
-  
+
   describe 'instance methods' do
     it 'can return active or pending activation' do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
@@ -56,6 +56,29 @@ RSpec.describe User, type: :model do
       user.active = true
 
       expect(user.status).to eq('Active')
+    end
+
+    it 'knows if a user is a friend already' do
+      user1 = User.create(email: "mike@mike.com",
+                         first_name: "Mike",
+                         last_name: "Hernandez",
+                         password: "mike",
+                         token: ENV['GITHUB_API_KEY'],
+                         github_login: 'mikez321'
+                        )
+      user2 = User.create(email: "atkinson.daniel7@gmail.com",
+                         first_name: "Daniel",
+                         last_name: "Atkinson",
+                         password: "mike",
+                         token: ENV['MY_GITHUB_KEY'],
+                         github_login: 'danielbldr'
+                        )
+      expect(user1.friends?(user2.github_login)).to eq(false)
+
+      Friend.create(user_id: user1.id, friended_id: user2.id)
+
+      expect(user1.friends?(user2.github_login)).to eq(true)
+
     end
   end
 end
