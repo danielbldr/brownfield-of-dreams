@@ -6,7 +6,7 @@
   <% @tutorials.each do |tutorial| %>
     <% if !current_user.nil? || tutorial.classroom == false %>
       <div class='tutorial' id="tutorial-<%= tutorial.id %>">
-        <img class="thumbnail col md-col-3" src= <%="#{tutorial.thumbnail}" %> >
+        <img class="large-thumbnail col md-col-3" src= <%="#{tutorial.thumbnail}" %> >
         <div class="tutorial-description col md-col-9">
           <h4 class="tutorial-title-home"><%= link_to tutorial.title, tutorial_path(tutorial), class: "title-link" %> </h4>
           <p class="description"><%= tutorial.description %></p> <br>
