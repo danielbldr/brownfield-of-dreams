@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @bookmarks = UserVideo.bookmarked_videos
+    @bookmarks = UserVideo.bookmarked_videos(current_user.id)
     return unless current_user.token
 
     github_results = GithubResults.new

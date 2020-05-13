@@ -15,11 +15,11 @@ class User < ApplicationRecord
     User.where(github_login: username).exists? && !username.nil?
   end
 
-  def not_yet_friends?(follower)
-    friend = User.find_by(github_login: follower.login)
-    return false if friend.friended.include?(self)
+  def friends?(follower)
+    friend = User.find_by(github_login: follower)
+    return true if friend.friended.include?(self)
 
-    true
+    false
   end
 
   def status
