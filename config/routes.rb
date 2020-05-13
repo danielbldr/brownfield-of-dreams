@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/invite', to: "invite#new"
+  post '/invite', to: "invite#create"
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
