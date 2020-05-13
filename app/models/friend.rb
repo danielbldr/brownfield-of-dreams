@@ -1,6 +1,6 @@
 class Friend < ApplicationRecord
   belongs_to :user
-  belongs_to :friended,  class_name: "User"
+  belongs_to :friended, class_name: 'User'
 
   after_create :create_inverse
 
