@@ -20,6 +20,7 @@ class User < ApplicationRecord
     return false if friend.friended.include?(self)
 
     true
+  end
 
   def status
     return 'Active' if active == true
