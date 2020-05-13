@@ -9,8 +9,15 @@
     <li> Status: <%= current_user.status %></li>
     <li> <%= link_to "Send an Invite", '/invite' %></li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <% if !@bookmarks.nil? %>
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to bookmark.title, "/tutorials/#{bookmark.tutorial_id}?video_id=#{bookmark.id}" %>
+      <% end %>
+    <% else %>
+      <p>You have no bookmarked videos.</p>
+    <% end %>
   </section>
 
 
