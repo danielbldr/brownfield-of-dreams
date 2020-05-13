@@ -281,3 +281,16 @@ div.title-bookmark {
 .pad-right {
   padding-right: 10px;
 }
+
+.error-flash {
+   padding: 20px;
+   background-color: #f44336;
+   color: white;
+   margin-bottom: 15px;
+}
+.success-flash {
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  margin-bottom: 15px;
+}
