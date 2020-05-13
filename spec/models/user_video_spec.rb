@@ -8,6 +8,7 @@ end
 describe 'class methods' do
   it 'can return all bookmarked_videos ordered by tutorial and position' do
     user1 = create(:user)
+    user2 = create(:user)
 
     tutorial1 = create(:tutorial)
       video1 = create(:video, tutorial_id: tutorial1.id, position: 1)
@@ -26,16 +27,19 @@ describe 'class methods' do
     UserVideo.create(user_id: user1.id, video_id: video4.id)
     UserVideo.create(user_id: user1.id, video_id: video6.id)
     UserVideo.create(user_id: user1.id, video_id: video7.id)
+    UserVideo.create(user_id: user2.id, video_id: video7.id)
+    UserVideo.create(user_id: user2.id, video_id: video4.id)
+    UserVideo.create(user_id: user2.id, video_id: video5.id)
 
-    expect(UserVideo.bookmarked_videos).to_not include(video5)
-    expect(UserVideo.bookmarked_videos[0]).to eq(video1)
-    expect(UserVideo.bookmarked_videos[1]).to eq(video4)
-    expect(UserVideo.bookmarked_videos[2]).to eq(video3)
+    expect(UserVideo.bookmarked_videos(user1.id)).to_not include(video5)
+    expect(UserVideo.bookmarked_videos(user1.id)[0]).to eq(video1)
+    expect(UserVideo.bookmarked_videos(user1.id)[1]).to eq(video4)
+    expect(UserVideo.bookmarked_videos(user1.id)[2]).to eq(video3)
 
-    expect(UserVideo.bookmarked_videos[4]).to eq(video7)
-    expect(UserVideo.bookmarked_videos[5]).to eq(video6)
+    expect(UserVideo.bookmarked_videos(user1.id)[4]).to eq(video7)
+    expect(UserVideo.bookmarked_videos(user1.id)[5]).to eq(video6)
 
-    expect(UserVideo.bookmarked_videos[4].tutorial).to eq(tutorial2)
-    expect(UserVideo.bookmarked_videos[5].tutorial).to eq(tutorial2)
+    expect(UserVideo.bookmarked_videos(user1.id)[4].tutorial).to eq(tutorial2)
+    expect(UserVideo.bookmarked_videos(user1.id)[5].tutorial).to eq(tutorial2)
   end
 end
