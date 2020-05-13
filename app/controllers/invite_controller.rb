@@ -1,7 +1,5 @@
 class InviteController < ApplicationController
-  def new
-
-  end
+  def new; end
 
   def create
     sender_name = "#{current_user.first_name} #{current_user.last_name}"
