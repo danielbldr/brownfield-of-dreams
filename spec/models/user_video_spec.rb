@@ -27,8 +27,7 @@ describe 'class methods' do
     UserVideo.create(user_id: user1.id, video_id: video4.id)
     UserVideo.create(user_id: user1.id, video_id: video6.id)
     UserVideo.create(user_id: user1.id, video_id: video7.id)
-    UserVideo.create(user_id: user2.id, video_id: video7.id)
-    UserVideo.create(user_id: user2.id, video_id: video4.id)
+    
     UserVideo.create(user_id: user2.id, video_id: video5.id)
 
     expect(UserVideo.bookmarked_videos(user1.id)).to_not include(video5)
