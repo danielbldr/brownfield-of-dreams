@@ -2,19 +2,23 @@
 <% if (!current_user.nil? || @facade.classroom == false)%>
   <h2><%= @facade.title %></h2>
   <h1 id="message"></h1>
-  <div class="col col-4">
+  <div class="col col-5 pad-right">
     <h4>Videos</h4>
     <ul>
-      <% @facade.videos.each do |video| %>
+      <% @tutorial_videos.each do |video| %>
         <li class='tutorial-video'>
           <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
         </li>
       <% end %>
     </ul>
+    <div class="digg_pagination">
+      <%= will_paginate @tutorial_videos, :container => false %>
+    </div>
   </div>
 
+
   <% if @facade.current_video %>
-    <div class="col col-8">
+    <div class="col col-7">
       <div class="title-bookmark">
         <h3><%= @facade.current_video.title %></h3>
         <div class="bookmarks-btn">
