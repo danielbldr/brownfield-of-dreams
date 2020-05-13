@@ -1,6 +1,7 @@
 class FriendsController < ApplicationController
   def create
-    # This is going to create entries in the friends joins table
-    # Friends.create(following_id: following.id, self: self.id)
+    friend = User.where(github_login: params[:friend])
+    current_user.friended << friend
+    redirect_to dashboard_path
   end
 end
