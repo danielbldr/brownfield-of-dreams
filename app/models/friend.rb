@@ -5,8 +5,9 @@ class Friend < ApplicationRecord
   after_create :create_inverse
 
   def create_inverse
-    self.class.create(user_id: self.friended.id, friended_id: self.user.id)
+    Friend.create(user_id: friended.id, friended_id: user.id)
   end
 
-  validates_uniqueness_of :user_id, scope: :friended_id
+  # validates_uniqueness_of :user_id, scope: :friended_id
+  validates :user_id, uniqueness: true
 end
