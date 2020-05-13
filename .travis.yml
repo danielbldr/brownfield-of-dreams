@@ -6,18 +6,19 @@ addons:
   chrome: stable
 dist: xenial
 before_install:
-  - yes | gem update --system --force
-  - gem install bundler
+- yes | gem update --system --force
+- gem install bundler
 before_script:
-  - gem install mailcatcher
-  - mailcatcher
+- gem install mailcatcher
+- mailcatcher
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key: ENV['HEROKU_API_KEY']
+  api_key:
+    secure: c2bzwMDvVLELEfbGqfaHfHELY94D/j8BymckKSLt/AGXgmdlJbdOf0zAiI37IBe7FWSaDo8W4h7L4jyHFGDJAzmqHskFQTNOKWkL3f3kMW9AhvOgmSjuaOQLnAZxkjvlm5EWBpMAZDBM4TOZ6cMUiogZPj5teeBnYissoOuKf3T3jw8dfsP899bWnpCTOobvn0JNSAMVqfqiBkxPYFXxLqS0Xa7jUjtRJdQTcMtQTh/K9x4SfnParoKDhfTeNcN95ZykpRD4ZZZUW/TxRWNnygRr0LQgXIKrSrYCHqj0I5AGmQxz3HqK9y9pvqyWtfYy5l42dH1yC1EWYj2u+rnYwKbMlGHKhGA5D0n6MkrdQIqdOTQc8IliJBlYDEfnNqTjoNDhOA40cjndj6C0n23wCbdn086V4ssLsewIAq+7DCpHphMkTawUwew0ICUvd6tStxK6GHDsCAlIpbnldYacgQJb0Db3xuh0SNW/lp1Al/ihhGl989AD/ICMGCfbP/U4Qeff/2cLoUQ3E6T8TaeaqDdh3oyj3Cb/JkIN1lEMYBWofE/s31PDeMSdPmNxusl60QCwmBwcMJdqsgPqRHmXI39vLLxrRqm5lwOZwXx5q1wJEHBlNtCDxDmSFUYI83A1WeBBoobR+wh2/xdUETvQQDbz98aXaRddzlk18ow0oFU=
   app: infinite-basin-07610
   run: rails db:migrate
 dd:
