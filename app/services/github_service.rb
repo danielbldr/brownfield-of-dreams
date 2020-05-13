@@ -14,6 +14,10 @@ class GithubService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def github_login(user_token)
+    user_repos(user_token).first[:owner][:login]
+  end
+
   def conn(user_token)
     Faraday.new(url: 'https://api.github.com') do |faraday|
       faraday.headers['Authorization'] = "token #{user_token}"
