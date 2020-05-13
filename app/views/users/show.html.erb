@@ -11,9 +11,12 @@
   </ul>
   <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
-    <% @bookmarks.each do |bookmark| %>
-    <%= binding.pry %>
-      <%= link_to bookmark.video.title, tutorial_video_path(bookmark.video.tutorial.id, bookmark.video_id) %>
+    <% if !@bookmarks.nil? %>
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to bookmark.title, "/tutorials/#{bookmark.tutorial_id}?video_id=#{bookmark.id}" %>
+      <% end %>
+    <% else %>
+      <p>You have no bookmarked videos.</p>
     <% end %>
   </section>
 
