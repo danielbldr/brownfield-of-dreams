@@ -8,6 +8,7 @@ RSpec.describe 'as a user I can see my bookmarks' do
     tutorial2 = create(:tutorial)
     video3 = create(:video, tutorial_id: tutorial2.id, position: 3)
     video4 = create(:video, tutorial_id: tutorial2.id, position: 1)
+    video5 = create(:video, tutorial_id: tutorial2.id, position: 9)
 
     user = User.create(email: "mike@mike.com",
                        first_name: "Mike",
