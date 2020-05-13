@@ -20,9 +20,11 @@ RSpec.describe Tutorial, type: :model do
                               standard: {
                                   url: 'https://i.ytimg.com/vi/Uamswxg21Zo/sddefault.jpg'
                               }
+                          },
+                          resourceId: {
+                            videoId: 1
                             },
-                          position: 1},
-                video_id: 1}
+                          position: 1}}
       video2 = {snippet: {title: 'thing',
                           description: 'desc',
                           thumbnails: {
@@ -30,8 +32,10 @@ RSpec.describe Tutorial, type: :model do
                                   url: 'https://i.ytimg.com/vi/Uamswxg21Zo/sddefault.jpg'
                               }
                             },
-                          position: 2},
-                video_id: 2}
+                          resourceId: {
+                            videoId: 2
+                          },
+                          position: 2}}
       videos = [video1, video2]
 
       expect(tutorial.videos.length). to eq(0)
