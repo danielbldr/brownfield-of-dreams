@@ -40,7 +40,7 @@
     <section class="<%= current_user.first_name %>-followers">
       <h3>Your Github Followers</h3>
       <% @followers.each do |follower| %>
-        <% if User.in_database?(follower.login) && current_user.not_yet_friends?(follower) %>
+        <% if User.in_database?(follower.login) && !current_user.friends?(follower.login) %>
           <p class='follower-<%= follower.login %>'><%= link_to follower.login, follower.html_url %> - <%= link_to "Add Friend", friends_path(:friend => follower.login), method: :post %></p>
         <% else %>
           <p class='follower-<%= follower.login %>'><%= link_to follower.login, follower.html_url %></p>
@@ -50,7 +50,7 @@
     <section class="<%= current_user.first_name %>-following">
       <h3>Users You Follow on Github</h3>
       <% @following.each do |following| %>
-        <% if User.in_database?(following.login)  && current_user.not_yet_friends?(following)%>
+        <% if User.in_database?(following.login)  && !current_user.friends?(following.login)%>
           <p class='following-<%= following.login %>'><%= link_to following.login, following.html_url %> - <%= link_to "Add Friend", friends_path(:friend => following.login), method: :post %></p>
         <% else %>
           <p class='following-<%= following.login %>'><%= link_to following.login, following.html_url %></p>
