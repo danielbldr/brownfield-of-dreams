@@ -1,13 +1,4 @@
 class Admin::VideosController < Admin::BaseController
-  def edit
-    @video = Video.find(params[:video_id])
-  end
-
-  def update
-    video = Video.find(params[:id])
-    video.update(video_params)
-  end
-
   def create
     tutorial = Tutorial.find(params[:tutorial_id])
     thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
