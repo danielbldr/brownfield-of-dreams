@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :friended, through: :friends
 
   validates :email, uniqueness: true, presence: true
-  validates :password, presence: true
+  validates :password_digest, presence: true
   validates :first_name, presence: true
 
   enum role: { default: 0, admin: 1 }
@@ -20,5 +20,10 @@ class User < ApplicationRecord
     return false if friend.friended.include?(self)
 
     true
+
+  def status
+    return 'Active' if active == true
+
+    'Pending Activation'
   end
 end

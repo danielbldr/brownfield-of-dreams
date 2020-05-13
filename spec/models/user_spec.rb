@@ -29,6 +29,7 @@ RSpec.describe User, type: :model do
     end
   end
 
+
   describe 'class methods' do
     it 'knows if a github name is in the database' do
       user1 = create(:user)
@@ -43,6 +44,18 @@ RSpec.describe User, type: :model do
 
       expect(User.in_database?(user1.github_login)).to eq(false)
       expect(User.in_database?(user2.github_login)).to eq(true)
+    end
+  end
+  
+  describe 'instance methods' do
+    it 'can return active or pending activation' do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
+
+      expect(user.status).to eq('Pending Activation')
+
+      user.active = true
+
+      expect(user.status).to eq('Active')
     end
   end
 end

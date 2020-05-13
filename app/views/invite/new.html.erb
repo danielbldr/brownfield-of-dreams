@@ -1,0 +1,10 @@
+<h2>Invite a Github User!</h2>
+<section>
+  <%= form_for :invite, url: invite_path, method: :post do |f| %>
+    <div>
+      <%= f.label :github_handle %>
+      <%= f.text_field :github_handle, class: "block col-12 field" %>
+    </div>
+    <%= f.submit 'Send Invite', class: "mt2 btn btn-primary mb1 bg-teal" %>
+  <% end %>
+</section>
