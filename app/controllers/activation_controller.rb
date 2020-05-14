@@ -1,5 +1,4 @@
 class ActivationController < ApplicationController
-
   def create
     email_info = { user: current_user }
     ActivationMailer.inform(email_info, current_user.email).deliver_now
