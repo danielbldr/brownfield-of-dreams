@@ -52,5 +52,7 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#create'
 
-  resources :friends, only: [:create]
+  # resources :friends, only: [:create]
+  get '/friends', to: 'friends#create'
+  post '/friends', to: 'friends#create'
 end
