@@ -47,7 +47,9 @@ Rails.application.routes.draw do
 
   resources :user_videos, only:[:create, :destroy]
 
-  get 'activation', to: 'activation#create'
+  get '/activation', to: 'activation#create'
+  # get '/activation', to: "activation#new"
+  post '/activation', to: "activation#create"
 
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#create'
