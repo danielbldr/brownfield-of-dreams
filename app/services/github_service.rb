@@ -15,7 +15,8 @@ class GithubService
   end
 
   def github_login(user_token)
-    user_repos(user_token).first[:owner][:login]
+    response = conn(user_token).get('user')
+    JSON.parse(response.body, symbolize_names: true)[:login]
   end
 
   def conn(user_token)
